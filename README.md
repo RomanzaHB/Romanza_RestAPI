@@ -1,36 +1,61 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Produk Dashboard — Demo Fullstack
 
-## Getting Started
+Demo app built for interview preparation: a small Next.js frontend (App Router, TypeScript, Tailwind) and a Go backend providing a simple REST API. The backend uses an in-memory slice as a data store for simplicity.
 
-First, run the development server:
+Contents
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- `backend/main.go` — Go REST API (in-memory DB)
+- `src/app` — Next.js (App Router) frontend
+  - `src/app/page.tsx` — Home
+  - `src/app/dashboard/page.tsx` — Dashboard (list of products)
+  - `src/app/input/page.tsx` — Create product
+  - `src/app/edit/page.tsx` — Edit / Delete product
+
+API endpoints
+
+- `GET /products` — list products
+- `POST /products` — create product (JSON `{ name, price }`)
+- `PUT /products/:id` — update product
+- `DELETE /products/:id` — delete product
+
+Run locally
+
+1. Start the backend
+
+```zsh
+cd backend
+go run main.go
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The backend listens on `http://localhost:8080`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+2. Start the frontend (from project root)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```zsh
+npm install
+npm run dev
+```
 
-## Learn More
+Open `http://localhost:3000` in your browser.
 
-To learn more about Next.js, take a look at the following resources:
+Quick demo script (1-2 minutes)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. Open Home -> click `Open Dashboard`.
+2. Dashboard: show header, yellow info box, product buttons grid.
+3. Create: click `Tambah Produk`, fill the form, `Simpan` — product appears.
+4. Edit: hover a product, click the ✎ badge -> edit page -> change values -> `Simpan Perubahan`.
+5. Delete: on edit page click `Hapus produk` and confirm.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Notes & tradeoffs
 
-## Deploy on Vercel
+- Storage: in-memory. Restarting the Go server clears data — use SQLite/Postgres for persistence in production.
+- CORS: backend allows `http://localhost:3000` during development.
+- UX & validation: minimal; consider adding toasts, client validation, and better error messages.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Next steps I can add (pick one)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Add unit tests for Go handlers and basic frontend tests.
+- Add `Dockerfile` + `docker-compose.yml` for one-command demo.
+- Add visual polish and toasts for create/edit/delete feedback.
+
+Tell me which of the next steps you want me to implement and I will add it now.
