@@ -1,6 +1,11 @@
-'use client';
+import { Suspense } from 'react';
 
-export default function EditPageContent() {
-  // ...existing logic...
-  return <div>{/* ...your content... */}</div>;
+import EditPageContent from './EditPageContent';
+
+export default function EditPage() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <EditPageContent />
+    </Suspense>
+  );
 }
