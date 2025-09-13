@@ -1,6 +1,5 @@
-import type { Metadata } from 'next';
-import './globals.css';
 import clsx from 'clsx';
+import type { Metadata } from 'next';
 import { Poppins } from 'next/font/google';
 import './globals.css';
 

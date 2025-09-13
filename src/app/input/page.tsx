@@ -1,6 +1,6 @@
 'use client';
-import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import React, { useState } from 'react';
 
 export default function InputPage() {
   const router = useRouter();
