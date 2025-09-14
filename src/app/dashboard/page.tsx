@@ -19,7 +19,8 @@ export default function DashboardPage() {
     setLoading(true);
     try {
       setError(null);
-      const res = await fetch('http://localhost:8080/products');
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+      const res = await fetch(`${apiUrl}/products`);
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       const data = await res.json();
       setProducts(data);

@@ -13,7 +13,8 @@ export default function InputPage() {
     if (!name || !price) return;
     setSubmitting(true);
     try {
-      await fetch('http://localhost:8080/products', {
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+      await fetch(`${apiUrl}/products`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name, price: Number(price) }),

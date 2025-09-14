@@ -25,7 +25,8 @@ export default function EditPageContent() {
     setSaving(true);
     setError(null);
     try {
-      const res = await fetch(`http://localhost:8080/products/${editId}`, {
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+      const res = await fetch(`${apiUrl}/products/${editId}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name, price: Number(price) }),
@@ -49,7 +50,8 @@ export default function EditPageContent() {
     if (!ok) return;
     setDeleting(true);
     try {
-      const res = await fetch(`http://localhost:8080/products/${editId}`, {
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+      const res = await fetch(`${apiUrl}/products/${editId}`, {
         method: 'DELETE',
       });
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
