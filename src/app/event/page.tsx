@@ -9,7 +9,7 @@ export default function EventPage() {
         <div className='mx-auto h-full w-full rounded-lg px-2'>
           <Image src='/images/17an.png' alt='17an' width={492} height={292} />
         </div>
-        <div className='mt-4'>
+        <div className='mt-4 flex justify-center gap-8'>
           <div className='inline-block rounded-lg bg-gray-500 px-3 py-1 text-white'>
             <Link href='/'>Back</Link>
           </div>
