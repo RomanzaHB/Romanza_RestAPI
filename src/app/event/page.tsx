@@ -13,6 +13,11 @@ export default function EventPage() {
           <div className='inline-block rounded-lg bg-gray-500 px-3 py-1 text-white'>
             <Link href='/'>Back</Link>
           </div>
+          <div className='inline-block rounded-lg bg-gray-500 px-3 py-1 text-white'>
+            <a href='/images/17an.png' download className='text-white'>
+              Download
+            </a>
+          </div>
         </div>
       </div>
     </main>
