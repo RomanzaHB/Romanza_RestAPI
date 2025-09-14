@@ -13,14 +13,15 @@ export default function InputPage() {
     if (!name || !price) return;
     setSubmitting(true);
     try {
-      const apiUrl = process.env.NEXT_PUBLIC_API_URL;
-      await fetch(`${apiUrl}/products`, {
+      const res = await fetch(`/api/products`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name, price: Number(price) }),
       });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
       // after submit, navigate back to dashboard and refresh
       router.push('/dashboard');
+      // ensure fresh data
       router.refresh();
     } catch (err) {
       console.error(err);
