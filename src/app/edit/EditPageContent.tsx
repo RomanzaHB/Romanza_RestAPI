@@ -42,11 +42,10 @@ export default function EditPageContent() {
   };
 
   const [deleting, setDeleting] = useState(false);
+  const [showConfirm, setShowConfirm] = useState(false);
 
   const handleDelete = async () => {
     if (!editId) return setError('No product id');
-    const ok = confirm('Yakin ingin menghapus produk ini?');
-    if (!ok) return;
     setDeleting(true);
     try {
       const res = await fetch(`/api/products/${editId}`, {
@@ -95,7 +94,7 @@ export default function EditPageContent() {
             <button
               type='button'
               className='rounded bg-red-500 px-4 py-2 text-white hover:bg-red-600 disabled:bg-red-300'
-              onClick={handleDelete}
+              onClick={() => setShowConfirm(true)}
               disabled={saving || deleting}
             >
               {deleting ? 'Menghapus...' : 'Hapus'}
@@ -103,6 +102,30 @@ export default function EditPageContent() {
           </div>
         </form>
         {error && <div className='mt-2 text-red-500'>{error}</div>}
+        {showConfirm && (
+          <div className='fixed inset-0 z-50 flex items-center justify-center bg-black/40'>
+            <div className='rounded bg-white p-6'>
+              <p className='mb-4'>Yakin, anda ingin menghapus</p>
+              <div className='flex gap-2'>
+                <button
+                  className='rounded bg-red-500 px-3 py-1 text-white'
+                  onClick={() => {
+                    setShowConfirm(false);
+                    handleDelete();
+                  }}
+                >
+                  Ya
+                </button>
+                <button
+                  className='rounded bg-gray-300 px-3 py-1'
+                  onClick={() => setShowConfirm(false)}
+                >
+                  Tidak
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </main>
   );

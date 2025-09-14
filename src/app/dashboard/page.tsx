@@ -38,9 +38,9 @@ export default function DashboardPage() {
   // Input handled on /input page. Dashboard only lists products.
 
   return (
-    <main className='flex min-h-screen items-center justify-center bg-gray-100 p-4 px-5 md:px-60 lg:px-120 2xl:px-200'>
+    <main className='flex min-h-screen items-center justify-center bg-gray-100 p-4 px-5 md:px-55 lg:px-120 2xl:px-200'>
       <div className='w-full rounded-2xl border bg-white p-6 shadow-lg'>
-        <h2 className='mb-4 text-center text-lg font-semibold'>
+        <h2 className='mb-4 text-center text-2xl font-semibold md:text-3xl lg:text-3xl'>
           <Link href='/' className='text-inherit'>
             Dashboard
           </Link>
@@ -48,11 +48,11 @@ export default function DashboardPage() {
 
         {/* Yellow header box */}
         <div className='mb-4 rounded-2xl border-1 border-gray-400 bg-yellow-300 p-2 text-center'>
-          <div className='mb-2 rounded-lg border-1 border-gray-400 bg-white px-3 py-2 text-sm font-semibold'>
-            Daftar Belanja
+          <div className='mb-2 rounded-lg border-1 border-gray-400 bg-white px-3 py-2 text-md font-semibold md:text-lg lg:text-xl'>
+            Nama Produk
           </div>
-          <div className='rounded-lg border-1 border-gray-400 bg-white px-3 py-2 text-sm font-semibold'>
-            Harga Product
+          <div className='rounded-lg border-1 border-gray-400 bg-white px-3 py-2 text-md font-semibold md:text-lg lg:text-xl'>
+            Harga Produk
           </div>
         </div>
 
@@ -107,7 +107,7 @@ export default function DashboardPage() {
         <div>
           <Link
             href='/input'
-            className='mb-3 inline-block w-full rounded bg-gray-400 py-2 text-center text-sm font-medium text-white'
+            className='mb-3 inline-block w-full rounded bg-gray-400 py-2 text-center text-md md:text-lg lg:text-lg font-medium text-white'
           >
             Tambah Produk
           </Link>
